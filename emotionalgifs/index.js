@@ -1,5 +1,5 @@
 var multipart = require('parse-multipart');
-var fetch = requie('node-fetch');
+var fetch = require('node-fetch');
 
 module.exports = async function (context, req) {
     var boundary = multipart.getBoundary(req.headers['content-type']);
@@ -22,27 +22,24 @@ module.exports = async function (context, req) {
 
 
 async function analyzeImage(img){
+    
     const subscriptionKey = process.env.SUBSCRIPTIONKEY;
     const uriBase = process.env.ENDPOINT + '/face/v1.0/detect';
-
     let params = new URLSearchParams({
         'returnFaceId': 'true',
-        'returnFaceAttributes': 'emotion'     //FILL IN THIS LINE
-    });
-    
+        'returnFaceAttributes': 'emotion'
+    })
     //COMPLETE THE CODE
     let resp = await fetch(uriBase + '?' + params.toString(), {
-        method: 'POST',  //post because we're sending something to the body
-        body: 'img',  //WHAT ARE WE SENDING TO THE API?
-      
-      	//ADD YOUR TWO HEADERS HERE
+        method: 'POST',  //WHAT TYPE OF REQUEST?
+        body: img,  //WHAT ARE WE SENDING TO THE API?
         headers: {
-            'Content-Type': 'application/octet-stream', //adssociated with post requests
-            'Ocp-Apim-Subscription-Key': subscriptionKey
+            'Content-Type': 'application/octet-stream',
+            'Ocp-Apim-Subscription-Key': subscriptionKey //do this in the next section
         }
-    });
-
-    let getData = await resp.json(); // obtaining the data, calling analyzeImage();
-    return getData;
+    })
+    let data = await resp.json();
+    
+    return data; 
 }
 
