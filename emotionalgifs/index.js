@@ -11,9 +11,22 @@ module.exports = async function (context, req) {
     //module.exports function
     //analyze the image
     var result = await analyzeImage(parts[0].data);
+
+    // getting the emotion attribute
+    let emotions = result[0].faceAttributes.emotion;
+
+    let objects = Object.values(emotions);
+    // FILL IT IN
+    // What your array could look like: [0.01, 0.34, .....]
+
+    const main_emotion = Object.keys(emotions).find(key => emotions[key] === Math.max(...objects));
+    // gets the main emotion (happiness in this case)
+
+
     context.res = {
+
         body: {
-            result
+            main_emotion
         }
     };
     console.log(result)
@@ -25,6 +38,9 @@ async function analyzeImage(img){
     
     const subscriptionKey = process.env.SUBSCRIPTIONKEY;
     const uriBase = process.env.ENDPOINT + '/face/v1.0/detect';
+    // remember when testing with postman, hardcode teh subscription
+    // key and azure url
+
     let params = new URLSearchParams({
         'returnFaceId': 'true',
         'returnFaceAttributes': 'emotion'
