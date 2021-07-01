@@ -33,7 +33,8 @@ module.exports = async function (context, req) {
 
 
 async function analyzeImage(img){
-    
+    //const subscriptionKey = "3cc99a9edd9a476aa17c9fc36b2fa5bf";
+    //const uriBase = "https://durmsapi.cognitiveservices.azure.com/face/v1.0/detect";
     const subscriptionKey = process.env.SUBSCRIPTIONKEY;
     const uriBase = process.env.ENDPOINT + '/face/v1.0/detect';
     // remember when testing with postman, hardcode teh subscription
@@ -59,9 +60,10 @@ async function analyzeImage(img){
 
 async function findGifs(emotion) {
     // giphy key
+    //const apiKey = "puky1KRol5OYx1TT6V7SaTsl6BDIYMPp";
     const apiKey = process.env.giphykey;
     // returning the api with the giphy key with required additional parameters
-    let apiResult = await fetch("https://api.giphy.com/v1/gifs/translate?api_key=" + apiKey + "&s:" + emotion);
+    let apiResult = await fetch("https://api.giphy.com/v1/gifs/translate?api_key=" + apiKey + "&s=" + emotion);
     // translating the api to json format
     let jsonResult = await apiResult.json();
     return jsonResult.data.url;
