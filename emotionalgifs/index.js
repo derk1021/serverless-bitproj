@@ -3,18 +3,19 @@ var fetch = require('node-fetch');
 
 module.exports = async function (context, req) {
     var boundary = multipart.getBoundary(req.headers['content-type']);
-    
+    //console.log('boundary:', boundary);
     var body = req.body;
-
+    //console.log('body:', body);
+    // store the given image into a list of objects that gives the filename and type of file
     var parts = multipart.Parse(body, boundary);
-
+    //console.log('parts:', parts);
     //module.exports function
     //analyze the image
     var result = await analyzeImage(parts[0].data);
-
+    //console.log('result:', result);
     // getting the emotion attribute
     let emotions = result[0].faceAttributes.emotion;
-
+    //console.log('emotions:', emotions);
     let objects = Object.values(emotions);
     // FILL IT IN
     // What your array could look like: [0.01, 0.34, .....]
@@ -27,7 +28,7 @@ module.exports = async function (context, req) {
     context.res = {
         body: gifUrl
     };
-    console.log(result)
+
     context.done(); 
 }
 
@@ -53,8 +54,9 @@ async function analyzeImage(img){
             'Ocp-Apim-Subscription-Key': subscriptionKey //do this in the next section
         }
     })
+    // data returns the 
     let data = await resp.json();
-    
+    //console.log('data:', data);
     return data; 
 }
 
@@ -66,5 +68,7 @@ async function findGifs(emotion) {
     let apiResult = await fetch("https://api.giphy.com/v1/gifs/translate?api_key=" + apiKey + "&s=" + emotion);
     // translating the api to json format
     let jsonResult = await apiResult.json();
+    //console.log('jsonResult:', jsonResult);
+    // finds the url gif
     return jsonResult.data.url;
 }
