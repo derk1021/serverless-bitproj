@@ -22,11 +22,10 @@ module.exports = async function (context, req) {
     const main_emotion = Object.keys(emotions).find(key => emotions[key] === Math.max(...objects));
     // gets the main emotion (happiness in this case)
 
+    let gifUrl = await findGifs(main_emotion);
 
     context.res = {
-
-        body: 
-            main_emotion
+        body: gifUrl
     };
     console.log(result)
     context.done(); 
@@ -58,3 +57,12 @@ async function analyzeImage(img){
     return data; 
 }
 
+async function findGifs(emotion) {
+    // giphy key
+    const apiKey = process.env.giphykey;
+    // returning the api with the giphy key with required additional parameters
+    let apiResult = await fetch("https://api.giphy.com/v1/gifs/translate?api_key=" + apiKey + "&s:" + emotion);
+    // translating the api to json format
+    let jsonResult = await apiResult.json();
+    return jsonResult.data.url;
+}
