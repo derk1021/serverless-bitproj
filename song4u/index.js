@@ -16,24 +16,29 @@ module.exports = async function (context, req) {
     const queryObject = queryString.parse(reqBody);
     context.log('queryObject:', queryObject);
 
-    context.log(queryObject.MediaUrl0);
     let resp = await fetch(queryObject.MediaUrl0, {
         method: 'GET',
     });
+    context.log('resp:', resp);
 
     // receive the response
     let data = await resp.arrayBuffer();
-    context.log(data);
+    context.log('data:', data);
     // we are receiving it as a Buffer since this is binary data
 
     let result = await analyzeImage(data);
-    context.log(result);
+    context.log('result:', result);
 
     let age = parseInt(result[0].faceAttributes.age);
-    context.log(age);
 
     let generation = '';
 
+    const songs = {"GenZ":"https://open.spotify.com/track/0SIAFU49FFHwR3QnT5Jx0k?si=1c12067c9f2b4fbf", 
+    "GenY":"https://open.spotify.com/track/1Je1IMUlBXcx1Fz0WE7oPT?si=a04bbdf6ec4948b9", 
+    "GenX":"https://open.spotify.com/track/4Zau4QvgyxWiWQ5KQrwL43?si=790d9e3ef2ed408d", 
+    "BabyBoomers":"https://open.spotify.com/track/4gphxUgq0JSFv2BCLhNDiE?si=1abb329f2dc24f50", 
+    "Unknown":"https://open.spotify.com/track/5ygDXis42ncn6kYG14lEVG?si=84b49b41d09d4d11"}
+    
     if (age > 5 && age < 25) {
         generation = 'GenZ';
     } else if (age > 24 && age < 41) {
@@ -45,7 +50,21 @@ module.exports = async function (context, req) {
     } else {
         generation = 'Unknown';
     }
-    context.log(generation);
+
+    let finalResponse = '';
+
+    if (generation === 'GenZ') {
+        finalResponse = `We guessed you're part of this generation: ${generation}! Happy listening! ${songs[generation]}`;
+    } else if (generation === 'GenY') {
+        finalResponse = `We guessed you're part of this generation: ${generation}! Happy listening! ${songs[generation]}`;
+    } else if (generation === 'GenX') {
+        finalResponse = `We guessed you're part of this generation: ${generation}! Happy listening! ${songs[generation]}`;
+    } else if (generation === 'BabyBoomers') {
+        finalResponse = `We guessed you're part of this generation: ${generation}! Happy listening! ${songs[generation]}`;
+    } else if (generation === 'Unknown') {
+        finalResponse = `We guessed you're part of this generation: ${generation}! Happy listening! ${songs[generation]}`;
+    }
+    context.log(finalResponse);
 
     context.res = {
         // status: 200, /* Defaults to 200 */
