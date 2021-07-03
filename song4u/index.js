@@ -30,6 +30,7 @@ module.exports = async function (context, req) {
     context.log(result);
 
     let age = result[0].faceAttributes.age;
+    context.log(age);
 
     let generation = '';
 
@@ -42,9 +43,10 @@ module.exports = async function (context, req) {
     } else if (age > 56 && age < 76) {
         generation = 'BabyBoomers';
     } else {
-        generation = 'Any other age';
+        generation = 'Unknown';
     }
-
+    context.log(generation);
+    
     context.res = {
         // status: 200, /* Defaults to 200 */
         body: generation
