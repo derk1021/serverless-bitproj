@@ -53,8 +53,8 @@ module.exports = async function (context, req) {
 
 async function analyzeImage(image) {
     // subscription key and endpoint
-    const subscriptKey = process.env.SUBSCRIPTIONKEY;
-    const theUrl = process.env.ENDPOINT + '/face/v1.0/detect';
+    const subscriptKey = process.env.SUBSCRIPTION_KEY;
+    const theUrl = process.env.SONG4U_ENDPOINT + '/face/v1.0/detect';
 
     // establish the parameters 
     let theParameters = new URLSearchParams({
