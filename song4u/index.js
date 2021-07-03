@@ -55,13 +55,13 @@ module.exports = async function (context, req) {
 
     if (generation === 'GenZ') {
         finalResponse = `We guessed you're part of this generation: ${generation}! Happy listening! ${songs[generation]}`;
-    } else if (generation === 'GenY') {
+    } if (generation === 'GenY') {
         finalResponse = `We guessed you're part of this generation: ${generation}! Happy listening! ${songs[generation]}`;
-    } else if (generation === 'GenX') {
+    } if (generation === 'GenX') {
         finalResponse = `We guessed you're part of this generation: ${generation}! Happy listening! ${songs[generation]}`;
-    } else if (generation === 'BabyBoomers') {
+    } if (generation === 'BabyBoomers') {
         finalResponse = `We guessed you're part of this generation: ${generation}! Happy listening! ${songs[generation]}`;
-    } else if (generation === 'Unknown') {
+    } if (generation === 'Unknown') {
         finalResponse = `We guessed you're part of this generation: ${generation}! Happy listening! ${songs[generation]}`;
     }
     context.log(finalResponse);
