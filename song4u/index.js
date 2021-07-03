@@ -10,24 +10,24 @@ module.exports = async function (context, req) {
     // Ex. of reqbody output: 
     // 'ToCountry=US&MediaContentType0=image%2Fjpeg&ToState=MI&SmsMessageSid=MM0fe83458b74a1f626eb0da4685ab28b5&NumMedia=1'
     const reqBody = req.body;
-    context.log('reqBody:', reqBody);
+    //context.log('reqBody:', reqBody);
 
     // we need to parse reqbody
     const queryObject = queryString.parse(reqBody);
-    context.log('queryObject:', queryObject);
+    //context.log('queryObject:', queryObject);
 
     let resp = await fetch(queryObject.MediaUrl0, {
         method: 'GET',
     });
-    context.log('resp:', resp);
+    //context.log('resp:', resp);
 
     // receive the response
     let data = await resp.arrayBuffer();
-    context.log('data:', data);
+    //context.log('data:', data);
     // we are receiving it as a Buffer since this is binary data
 
     let result = await analyzeImage(data);
-    context.log('result:', result);
+    //context.log('result:', result);
 
     let age = parseInt(result[0].faceAttributes.age);
 
@@ -40,31 +40,16 @@ module.exports = async function (context, req) {
     "Unknown":"https://open.spotify.com/track/5ygDXis42ncn6kYG14lEVG?si=84b49b41d09d4d11"}
     
     if (age > 5 && age < 25) {
-        generation = 'GenZ';
+        generation = `We guessed you're part of this generation: GenZ! Happy listening! ${songs['GenZ']}`;
     } else if (age > 24 && age < 41) {
-        generation = 'GenY';
+        generation = `We guessed you're part of this generation: GenY! Happy listening! ${songs['GenY']}`;
     } else if (age > 40 && age < 57) {
-        generation = 'GenX';
+        generation = `We guessed you're part of this generation: GenX! Happy listening! ${songs['GenX']}`;
     } else if (age > 56 && age < 76) {
-        generation = 'BabyBoomers';
+        generation = `We guessed you're part of this generation: BabyBoomers! Happy listening! ${songs['BabyBoomers']}`;
     } else {
-        generation = 'Unknown';
+        generation = `We guessed you're part of this generation: Unknown! Happy listening! ${songs['Unknown']}`;
     }
-
-    let finalResponse = '';
-
-    if (generation === 'GenZ') {
-        finalResponse = `We guessed you're part of this generation: ${generation}! Happy listening! ${songs[generation]}`;
-    } if (generation === 'GenY') {
-        finalResponse = `We guessed you're part of this generation: ${generation}! Happy listening! ${songs[generation]}`;
-    } if (generation === 'GenX') {
-        finalResponse = `We guessed you're part of this generation: ${generation}! Happy listening! ${songs[generation]}`;
-    } if (generation === 'BabyBoomers') {
-        finalResponse = `We guessed you're part of this generation: ${generation}! Happy listening! ${songs[generation]}`;
-    } if (generation === 'Unknown') {
-        finalResponse = `We guessed you're part of this generation: ${generation}! Happy listening! ${songs[generation]}`;
-    }
-    context.log(finalResponse);
 
     context.res = {
         // status: 200, /* Defaults to 200 */
