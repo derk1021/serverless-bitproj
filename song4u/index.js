@@ -46,6 +46,9 @@ module.exports = async function (context, req) {
         // status: 200, /* Defaults to 200 */
         body: generation
     };
+    context.log(age);
+    context.log(generation);
+    context.done(); 
 }
 
 async function analyzeImage(image) {
@@ -64,7 +67,7 @@ async function analyzeImage(image) {
         body: image,  //WHAT ARE WE SENDING TO THE API?
         headers: {
             'Content-Type': 'application/octet-stream',
-            'Ocp-Apim-Subscription-Key': subscriptionKey //do this in the next section
+            'Ocp-Apim-Subscription-Key': subscriptKey //do this in the next section
         }
     });
 
