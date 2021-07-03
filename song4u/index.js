@@ -29,7 +29,7 @@ module.exports = async function (context, req) {
     let result = await analyzeImage(data);
     context.log(result);
 
-    let age = result[0].faceAttributes.age;
+    let age = parseInt(result[0].faceAttributes.age);
     context.log(age);
 
     let generation = '';
@@ -46,7 +46,7 @@ module.exports = async function (context, req) {
         generation = 'Unknown';
     }
     context.log(generation);
-    
+
     context.res = {
         // status: 200, /* Defaults to 200 */
         body: generation
