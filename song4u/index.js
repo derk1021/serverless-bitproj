@@ -16,15 +16,18 @@ module.exports = async function (context, req) {
     const queryObject = queryString.parse(reqBody);
     context.log('queryObject:', queryObject);
 
+    context.log(queryObject.MediaUrl0);
     let resp = await fetch(queryObject.MediaUrl0, {
         method: 'GET',
     });
 
     // receive the response
     let data = await resp.arrayBuffer();
+    context.log(data);
     // we are receiving it as a Buffer since this is binary data
 
-    let result = analyzeImage(data);
+    let result = await analyzeImage(data);
+    context.log(result);
 
     let age = result[0].faceAttributes.age;
 
@@ -46,9 +49,6 @@ module.exports = async function (context, req) {
         // status: 200, /* Defaults to 200 */
         body: generation
     };
-    context.log(age);
-    context.log(generation);
-    context.done(); 
 }
 
 async function analyzeImage(image) {
@@ -56,15 +56,14 @@ async function analyzeImage(image) {
     //const subscriptKey = process.env.SUBSCRIPTION_KEY;
     //const theUrl = process.env.SONGREC_ENDPOINT + 'face/v1.0/detect';
     const subscriptKey = process.env.SUBSCRIPTIONKEY;
-    const theUrl = process.env.ENDPOINT + '/face/v1.0/detect';
-
+    const theUrl = process.env.ENDPOINT + 'face/v1.0/detect';
     // establish the parameters 
     let theParameters = new URLSearchParams({
-        'returnFaceId': true,
-        'returnFaceAttributes': age
+        'returnFaceId': 'true',
+        'returnFaceAttributes': 'age'
     });
 
-    let response = fetch(theUrl + '?' + theParameters.toString(), {
+    let resp = await fetch(theUrl + '?' + theParameters.toString(), {
         method: 'POST',
         body: image,  //WHAT ARE WE SENDING TO THE API?
         headers: {
@@ -73,7 +72,7 @@ async function analyzeImage(image) {
         }
     });
 
-    let theData = await response.json();
-    
-    return theData;
+    let data = await resp.json();
+
+    return data;
 }
