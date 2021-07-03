@@ -21,7 +21,7 @@ if (uri[0] == null) {
     } else if ( result == "GenY") {
         console.log("Yay! 🎉 You're right, you guessed the generation correctly!")
     } else {
-        console.log("Try again! We didn't get the correct generation/age back.")
+        console.log("Try again! We didn't get the correct generation/age back. We got " + result + " instead of GenY.")
         process.exit(1)
     }
 })().catch( e => { console.error("Try again! We got this error when trying to make a request: " + e); process.exit(1) })
