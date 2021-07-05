@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@azure/storage-blob": "^12.2.1",
+    "@azure/storage-blob": "^12.6.0",
     "node-fetch": "^2.6.1",
     "parse-multipart": "^1.0.4"
   }
