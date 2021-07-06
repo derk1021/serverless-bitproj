@@ -4,27 +4,35 @@ const connectionString = process.env.AZURE_STORAGE_CONNECTION_STRING;
 const { BlobServiceClient } = require("@azure/storage-blob");
 
 module.exports = async function (context, req) {
-    // Parsing the data
-    const body = req.body;
-    const boundary = multipart.getBoundary(req.headers['content-type']);
-    const parsedBody = multipart.Parse(body, boundary);
+    let responseMessage = "";
+    // We are using try/catch to determine if an image has even been attached
+    // This is because we want to manually name the image that's been attached
+    try {
+        // Get the header called "codename" and assign it with desired value to name
+        let password = req.headers['codename'];
 
-    // checking what the file type is
-    let filetype = parsedBody[0].type;
-    let ext = "";
-    if (filetype == "image/png") {
-        ext = "png";
-    } else if (filetype == "image/jpeg") {
-        ext = "jpeg";
-    } else if (filetype == "image/jpg") {
-        ext = "jpg";
-    } else {
-        username = "invalidimage";
+        // Use parse-multipart to parse the body, parsing the data
+        const body = req.body;
+        const boundary = multipart.getBoundary(req.headers['content-type']);
+        const parsedBody = multipart.Parse(body, boundary);
+
+        // Determine the file-type here!
+        let filetype = parsedBody[0].type;
+        let ext = "";
+        if (filetype == "image/png") {
+            ext = "png";
+        } else if (filetype == "image/jpeg") {
+            ext = "jpeg";
+        } else if (filetype == "image/jpg") {
+            ext = "jpg";
+        } else {
+            username = "invalidimage";
+        }
+        responseMessage = await uploadFile(parsedBody, ext, password);
+    } catch(err) {
+        responseMessage = "Sorry! No image attached."
     }
     
-    // calling the upload file function
-    let responseMessage = await uploadFile(parsedBody, ext);
-
     context.res = {
         // status: 200, /* Defaults to 200 */
         body: responseMessage
@@ -32,7 +40,7 @@ module.exports = async function (context, req) {
 }
 
 // Function for uploading a file to the blob storage
-async function uploadFile(parsedBody, ext) {
+async function uploadFile(parsedBody, ext, password) {
     /*
     These three lines basically tell blob "Hey, these are my credentials,
     can you let me access my storage?"
@@ -43,7 +51,7 @@ async function uploadFile(parsedBody, ext) {
     
     // Creating a blob
     // ext == extension, like .jpeg or .png
-    const blobName = 'test.' + ext;    // Create the container, or available directories
+    const blobName = password + '.' + ext;    // Create the container, or available directories
     const blockBlobClient = containerClient.getBlockBlobClient(blobName); // Get a block blob client, or getting the files ready
     
     // Uploading the blob to the container
