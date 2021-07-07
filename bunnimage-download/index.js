@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 module.exports = async function (context, req) {
 
     let blobStorageUri = "myfirstblob1";
-    let blobContainerName = "blob-storage";
+    let blobContainerName = "images";
 
     // We are getting the 'username' header to determine the file that's needs to be downloaded
     var username = req.headers['username'];
