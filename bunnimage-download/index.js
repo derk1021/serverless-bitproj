@@ -2,14 +2,15 @@ const fetch = require('node-fetch');
 
 module.exports = async function (context, req) {
 
-    let myBlobName = "myfirstblob1";
+    let blobStorageUri = "myfirstblob1";
+    let blobContainerName = "blob-storage";
 
     // We are getting the 'username' header to determine the file that's needs to be downloaded
     var username = req.headers['username'];
     // Testing for when download has .png or .jpeg extension
     var download = ""
-    var downloadpng = `https://${myBlobName}.blob.core.windows.net/blob-container/${username}.png`;
-    var downloadjpg = `https://${myBlobName}.blob.core.windows.net/blob-container/${username}.jpg`;
+    var downloadpng = `https://${blobStorageUri}.blob.core.windows.net/${blobContainerName}/${username}.png`;
+    var downloadjpg = `https://${blobStorageUri}.blob.core.windows.net/${blobContainerName}/${username}.jpeg`;
 
     // Making the 'GET' requests for each of the types of downloaded images
     let pngresp = await fetch(downloadpng, {
