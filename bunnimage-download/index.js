@@ -2,7 +2,7 @@ const fetch = require('node-fetch');
 
 module.exports = async function (context, req) {
 
-    // We need to give the parameters for the link
+    // We need to give the parameters for the link dsfdgdfg
     let blobStorageUri = "myfirstblob1"; //ihiuhu
     let blobContainerName = "blob-container";
 
