@@ -1,9 +1,10 @@
+/******** Store a message from Twilio in CosmosDB and return the most recent message *********/
 const querystring = require('querystring');
 const CosmosClient = require("@azure/cosmos").CosmosClient;
 // Create a config object that contains all of the sensitive information that we need to manipulate our data.
 const config = {
-    endpoint: process.env.ENDPOINT,
-    key: process.env.KEY,
+    endpoint: process.env.COSMOS_ENDPOINT,
+    key: process.env.COSMOS_KEY,
     databaseId: "SecretStorer",
     containerId: "secrets",
     partitionKey: {kind: "Hash", paths: ["/secrets"]}
