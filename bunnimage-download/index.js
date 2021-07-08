@@ -18,25 +18,26 @@ module.exports = async function (context, req) {
     let pngresp = await fetch(downloadpng, {
         method: 'GET'
     });
+    let pngdata = await pngresp;
+
     let jpgresp = await fetch(downloadjpg, {
         method: 'GET'
     });
+    let jpgdata = await jpgresp;
+
     let jpegresp = await fetch(downloadjpeg, {
         method: 'GET'
     });
-
-    // Holds the data and is ready to be called
-    let pngdata = await pngresp;
-    let jpgdata = await jpgresp;
     let jpegdata = await jpegresp;
 
     // Checks if the blob exists or not for purposes of downloading
     // Test which is the correct download URL
-    if (pngdata.statusText == "The specified blob does not exist." && jpgdata.statusText == "The specified blob does not exist." ) {
+    if (pngdata.statusText == "The specified blob does not exist." && jpgdata.statusText == "The specified blob does not exist." && jpegdata.statusText == "The specified blob does not exist.") {
         // The attribute "statusText" determine if a blob exists
         success = false;
         context.log("Does not exist: " + pngdata);
         context.log("Does not exist: " + jpgdata);
+        context.log("Does not exist: " + jpegdata);
     } else if (pngdata.statusText != "The specified blob does not exist.") {
         success = true;
         download = downloadpng;
@@ -47,7 +48,7 @@ module.exports = async function (context, req) {
         context.log("Does exist: " + jpgdata);
     } else if (jpegdata.statusText != "The specified blob does not exist.") {
         success = true;
-        doNotTrack = downloadjpeg;
+        download = downloadjpeg;
         context.log("Does existL: " + jpegdata);
     }
     
