@@ -12,6 +12,7 @@ module.exports = async function (context, req) {
     var download = ""
     var downloadpng = `https://${blobStorageUri}.blob.core.windows.net/${blobContainerName}/${username}.png`;
     var downloadjpg = `https://${blobStorageUri}.blob.core.windows.net/${blobContainerName}/${username}.jpg`;
+    var downloadjpeg = `https://${blobStorageUri}.blob.core.windows.net/${blobContainerName}/${username}.jpeg`;
 
     // Making the 'GET' requests for each of the types of downloaded images
     let pngresp = await fetch(downloadpng, {
@@ -20,10 +21,14 @@ module.exports = async function (context, req) {
     let jpgresp = await fetch(downloadjpg, {
         method: 'GET'
     });
+    let jpegresp = await fetch(downloadjpeg, {
+        method: 'GET'
+    });
 
     // Holds the data and is ready to be called
     let pngdata = await pngresp;
     let jpgdata = await jpgresp;
+    let jpegdata = await jpegresp;
 
     // Checks if the blob exists or not for purposes of downloading
     // Test which is the correct download URL
@@ -40,6 +45,10 @@ module.exports = async function (context, req) {
         success = true;
         download = downloadjpg;
         context.log("Does exist: " + jpgdata);
+    } else if (jpegdata.statusText != "The specified blob does not exist.") {
+        success = true;
+        doNotTrack = downloadjpeg;
+        context.log("Does existL: " + jpegdata);
     }
     
     context.res = {
