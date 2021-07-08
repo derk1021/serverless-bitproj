@@ -11,7 +11,7 @@ module.exports = async function (context, req) {
     // Testing for when download has .png or .jpeg extension
     var download = ""
     var downloadpng = `https://${blobStorageUri}.blob.core.windows.net/${blobContainerName}/${username}.png`;
-    var downloadjpg = `https://${blobStorageUri}.blob.core.windows.net/${blobContainerName}/${username}.jpeg`;
+    var downloadjpg = `https://${blobStorageUri}.blob.core.windows.net/${blobContainerName}/${username}.jpg`;
 
     // Making the 'GET' requests for each of the types of downloaded images
     let pngresp = await fetch(downloadpng, {
