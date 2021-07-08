@@ -28,10 +28,12 @@ module.exports = async function (context, req) {
     // Store the message in a document
     let items = await createDocument(document);
     // Generating a random integer that is strictly less than the length of the array of secrets
-    const generateRandomSecret = Math.floor(Math.random() * items.length);
-    context.log('items:', items + '\n' + 'items[generateRandomSecret]:', items[generateRandomSecret]);
+    var random_value = Math.floor(items.length * Math.random());
 
-    const responseMessage = `Thanks 😊! Stored your secret "${message}". 😯 Someone confessed that: ${JSON.stringify(items[generateRandomSecret].message)}`
+    context.log('random_value: ', random_value + '\n');
+    context.log('items:', items + '\n' + 'items[random_value]:', items[random_value]);
+
+    const responseMessage = `Thanks 😊! Stored your secret "${message}". 😯 Someone confessed that: ${JSON.stringify(items[random_value].message)}`
 
     context.res = {
         // status: 200, /* Defaults to 200 */
@@ -78,7 +80,6 @@ async function createDocument(newItem) {
         // Query for all secrets inside your container.
         query: "SELECT * from c"
     };
-    console.log('queries: ', querySpec.query);
 
     // Using the query querySpec, it will use the container we created to fetch the most recent document!
     const { resources: items } = await container.items.query(querySpec).fetchAll();
