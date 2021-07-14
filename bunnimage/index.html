@@ -4,17 +4,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>The best form</title>
+    <!--
+      <link> is importing the custom css file
+    -->
+    <link href="styles.css" rel="stylesheet">
   </head>
   <body>
-      <div>
+      <div class="borderDiv">
               <h1 id="h1">Give your code some love ❤️</h1>
-              <form>
+              <form class="borderForm">
                   <label>Code: </label>
                   <input type="text" id="name" name="name" /><br>
-                  <input onClick="getImage()" value="Submit" type="button" />
+                  <input onClick="getImage()" value="Submit" type="button" style="color: red; margin: 20px;"/>
               </form>
               <br/>
-              <div id="output"></div>
+              <label style="font-size: 20px;"><strong>Output:</strong></label>
+              <div id="output" ></div>
         </div>
     </body>  
     
