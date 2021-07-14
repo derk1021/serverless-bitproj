@@ -7,21 +7,21 @@
     <!--
       <link> is importing the custom css file
     -->
-
+    <link href="styles.css" rel="stylesheet">
   </head>
   <body>
-      <div>
+      <div class="borderDiv">
               <h1 id="h1">Give your code some love ❤️</h1>
-              <form  id='myform' enctype="multipart/form-data" onsubmit="getImage(event)">
+              <form class="borderForm" id='myform' enctype="multipart/form-data" onsubmit="getImage(event)">
                   <!--"Choose File" button that only accepts png and jpeg files-->
                   <input type="file" accept="image/x-png,image/jpeg" name="image"></input>
                   <!--Textbox for inputting text-->
                   <input type="text" id="name" name="name" placeholder="Enter your file's name"/><br>
                   <!--"Submit" button-->
-                  <input value="Submit" type="submit"/>
+                  <input value="Submit" type="submit" style="color: red; margin: 20px;"/>
               </form>
               <br/>
-              <label></label>
+              <label style="font-size: 20px;"><strong>Output:</strong></label>
               <div id="output" ></div>
         </div>
     </body>  
