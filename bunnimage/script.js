@@ -5,7 +5,7 @@ function getImage(event) {
     // we reference the html form element with document.getElementById("YOUR_FORM_ID"), so we can create a FormData object
     // also used for header and file input
     let refId = document.getElementById("formData");
-    let inputName = document.getElementById('inputTheName');
+    let inputName = document.getElementById('username');
     let inputFile = document.getElementById('chooseFiles');
     // we extract the file the user uploaded using fileInput.files[0]
     const file = inputFile.files[0];
