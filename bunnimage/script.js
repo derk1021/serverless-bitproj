@@ -1,3 +1,4 @@
+// no async for post requests
 function getImage(event) {
     // stops the page from refreshing
     event.preventDefault(); 
@@ -12,18 +13,12 @@ function getImage(event) {
     let formObj = new FormData(refId);
     // finally, we add the file created to the FormData object using append, and a key('file')-value(file) pair
     formObj.append('file', file);
-/*
-    if (inputName.value !== '') {
 
-    } else {
-        alert('No name error.')
-    }
-    */
     try {
         if (inputName.value !== '') {
-            let url = "https://dereksemotionalfunction.azurewebsites.net/api/bunnimage-upload?";
-            // making request to Azure function
-            let resp = fetch(url, {
+            // making request to Azure function and UPLOADING
+            let uploadUrl = "https://dereksemotionalfunction.azurewebsites.net/api/bunnimage-upload?";
+            let resp = fetch(uploadUrl, {
                 method: 'POST',
                 body: formObj,
                 headers: {
@@ -32,9 +27,39 @@ function getImage(event) {
             });
             $('#output').text('Your image has been stored successfully!');
         } else {
-            alert('No name error.')
+            alert('No name error.');
       }
     } catch (error) {
-        $('#output').text("dfdf");
+        $('#output').text("There is an error!");
+    }
+}
+
+// async got get requests
+async function downloadImage() {
+    let inputDownloadable = document.getElementById("downloadusername");
+    // using the bunnimage download api
+    let downloadUrl = "https://dereksemotionalfunction.azurewebsites.net/api/bunnimage-download?";
+    if (inputDownloadable.value !== '') {
+        try {
+        // making a get request to the image
+        // also returns a Promise containing a response
+        fetch(downloadUrl, {
+            headers: {
+            username: inputDownloadable.value
+            }
+        })
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            console.log('data:', data);
+            console.log('data.downloadUri:', data.downloadUri);
+            window.log(data.downloadUri, '_self');
+        });
+        } catch (error) {
+        $('#output').text(error);
+        }
+    } else {
+        $('#output').text("Specify the correct name!");
     }
 }
