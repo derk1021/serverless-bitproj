@@ -12,13 +12,13 @@
   <body>
       <div class="borderDiv">
               <h1 id="h1">Give your code some love ❤️</h1>
-              <form class="borderForm" id='myform' enctype="multipart/form-data" onsubmit="getImage(event)">
+              <form class="borderForm" id="formData" enctype="multipart/form-data" onsubmit="getImage(event)">
                   <!--"Choose File" button that only accepts png and jpeg files-->
-                  <input type="file" accept="image/x-png,image/jpeg" name="image"></input>
-                  <!--Textbox for inputting text-->
-                  <input type="text" id="name" name="name" placeholder="Enter your file's name"/><br>
+                  <input type="file" id="chooseFiles" accept="image/x-png,image/jpeg" name="image"></input>
+                  <!--Textbox for inputting text (name)-->
+                  <input type="text" id="inputTheName" placeholder="Enter your file's name"/><br>
                   <!--"Submit" button-->
-                  <input value="Submit" type="submit" style="color: red; margin: 20px;"/>
+                  <input type="submit" style="color: red; margin: 20px;"/>
               </form>
               <br/>
               <label style="font-size: 20px;"><strong>Output:</strong></label>
