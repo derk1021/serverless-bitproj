@@ -1,0 +1,12 @@
+.borderDiv {
+    border-style: solid;
+    text-align: center;
+    margin: 200px;
+    line-height: 2em;
+}
+.borderForm {
+    border: dotted; 
+    margin: 50px; 
+    padding: 10px; 
+    border-width: 10px;
+}
