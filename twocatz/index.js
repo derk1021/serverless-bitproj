@@ -22,7 +22,7 @@ module.exports = async function (context, req) {
         //put what you want to turn into base64 inside "originaldata"
         //"originaldata" will be encoded in base64.
 
-        return base64data;
+        return "data:image/png;base64" + base64data;
     }
 
     let result1 = await getCatPicture(name1);
