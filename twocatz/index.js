@@ -2,8 +2,14 @@ const fetch = require('node-fetch');
 module.exports = async function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
 
-    async function getCatPicture() {
-        let resp = await fetch("https://cataas.com/cat/cute/says/Serverless", {
+    name1 = req.query.name1;
+    name2 = req.query.name2;
+    name3 = req.query.name3;
+    name4 = req.query.name4;
+
+    async function getCatPicture(name) {
+        let endpoint = `https://cataas.com/cat/says/${name}`;
+        let resp = await fetch(endpoint, {
             method: 'GET'
         });
         
@@ -18,26 +24,18 @@ module.exports = async function (context, req) {
         return base64data;
     }
 
-    let getCat1 = await getCatPicture();
-    let getCat2 = await getCatPicture();
-
-    function allNames() {
-        let theNames = ['Shreya', 'Emily', 'Fifi', 'Beau', 'Evelyn', 'Julia', 'Daniel', 'Fardeen'];
-        let randomVal = Math.floor(theNames.length * Math.random());
-        let resultName = theNames[randomVal];
-
-        return resultName;
-    }
-
-    let getName1 = allNames();
-    let getName2 = allNames();
+    let result1 = await getCatPicture(name1);
+    let result2 = await getCatPicture(name2);
+    let result3 = await getCatPicture(name3);
+    let result4 = await getCatPicture(name4);
 
     context.res = {
         // status: 200, /* Defaults to 200 */
         body: {
-            cat1: getCat1,
-            cat2: getCat2,
-            names: [getName1, getName2]
+            cat1: result1,
+            cat2: result2,
+            cat3: result3,
+            cat4: result4
         } //json format in curly braces
     };
 }
