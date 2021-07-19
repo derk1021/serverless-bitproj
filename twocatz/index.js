@@ -2,6 +2,7 @@ const fetch = require('node-fetch');
 module.exports = async function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
 
+    // these are basically the headers you manually input
     name1 = req.query.name1;
     name2 = req.query.name2;
     name3 = req.query.name3;
@@ -17,7 +18,7 @@ module.exports = async function (context, req) {
         // we need to receive it as a buffer since this is an image we are receiving from the API
         // Buffer?? https://developer.mozilla.org/en-US/docs/Web/API/Blob
        
-        let base64data = Buffer.from(data).toString('base64')
+        let base64data = 'data:image/png;base64,' + Buffer.from(data).toString('base64')
         //put what you want to turn into base64 inside "originaldata"
         //"originaldata" will be encoded in base64.
 
