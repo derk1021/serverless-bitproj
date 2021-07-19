@@ -9,7 +9,7 @@ module.exports = async function (context, req) {
     name4 = req.query.name4;
 
     async function getCatPicture(name) {
-        let endpoint = `https://cataas.com/cat/says/${name}`;
+        let endpoint = `https://cataas.com/cat/cute/says/${name}`;
         let resp = await fetch(endpoint, {
             method: 'GET'
         });
@@ -18,7 +18,7 @@ module.exports = async function (context, req) {
         // we need to receive it as a buffer since this is an image we are receiving from the API
         // Buffer?? https://developer.mozilla.org/en-US/docs/Web/API/Blob
        
-        let base64data = 'data:image/png;base64,' + Buffer.from(data).toString('base64')
+        let base64data = Buffer.from(data).toString('base64')
         //put what you want to turn into base64 inside "originaldata"
         //"originaldata" will be encoded in base64.
 
