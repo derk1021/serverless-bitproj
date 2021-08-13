@@ -26,17 +26,19 @@ to speech services.
 ### Packages/Libraries/Databases
 
 **Name of Packages/Library/Database**
-- Packages for text-to-speech: fs (performs file system operations, used as a callback API) and microsoft-cognitiveservices-speech-sdk (support usage of builtin json objects for initilializing credentials and audio functionality)
+- Packages for text-to-speech: microsoft-cognitiveservices-speech-sdk (support usage of builtin json objects for initilializing credentials and audio functionality)
 - Packages for computer vision: parse-multipart (we need to parse the raw multipart payload to extract the files or data contained on it) and node-fetch (allows for http requests to be made)
+- Javascript library: jquery (used to output text on the website)
 
 ### Front-end Languages
 
 **Name of Language**
-- React: main framework for building the website (combines Javascript XML, HTML, and CSS)
 - Javascript: written to code the functionality of the services
 - HTML: used to develop the small details of the website (buttons, text boxes, etc.)
 - CSS: styling purposes for the UI
 
 ### Flowchart
 
-![](https://user-images.githubusercontent.com/74162956/127563249-b43cb9cb-14b5-403c-84df-3c9ae9061b61.png)
+Step 1 Flowchart: ![](https://user-images.githubusercontent.com/74162956/127563249-b43cb9cb-14b5-403c-84df-3c9ae9061b61.png)
+
+Step 2 Flowchart: ![](https://user-images.githubusercontent.com/74162956/129427561-176c77e8-40d2-4394-b382-8a42122eabf4.png)

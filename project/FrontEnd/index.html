@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="#"> <!-- 404 (Not Found) error failed to load favicon.ico  -->
+    <link href="styles.css" rel="stylesheet"> <!--<link> is importing the custom css file-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seeing It</title>
+</head>
+<body>
+    <div>
+        <h1>Seeing It</h1>
+            <form id="formData" enctype="multipart/form-data" onsubmit="returnText(event)">
+                <!--"Choose File" button that only accepts png and jpeg files-->
+                <input type="file" id="chooseFiles" accept="image/x-png,image/jpeg" name="image"/>
+                <!--"Submit" button-->
+                <input type="submit" value="Get Description" id="button1"/>
+            </form><br/>
+        <label><strong>Output:</strong></label>
+        <p id="output"></p>
+    </div>
+    <div>
+        <form onsubmit="beginTranslation(event)">
+            <input type="submit" value="Translate to Speech" id="startSynthesisAsyncButton"/>
+        </form>
+    </div>
+</body> 
+
+<!--IMPORTS-->
+<!--JQuery-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<!--script.js-->
+<script src="script.js" type="text/javascript"></script>
+<!--SpeechSDK Class reference-->
+<script src="https://aka.ms/csspeech/jsbrowserpackageraw"></script>
