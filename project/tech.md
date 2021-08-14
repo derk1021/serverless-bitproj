@@ -42,3 +42,5 @@ to speech services.
 Step 1 Flowchart: ![](https://user-images.githubusercontent.com/74162956/127563249-b43cb9cb-14b5-403c-84df-3c9ae9061b61.png)
 
 Step 2 Flowchart: ![](https://user-images.githubusercontent.com/74162956/129427561-176c77e8-40d2-4394-b382-8a42122eabf4.png)
+
+Step 3 Flowchart: updates are not needed, refer to "Step 2 Flowchart."
