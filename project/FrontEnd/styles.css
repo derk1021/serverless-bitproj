@@ -726,9 +726,81 @@ bold {
   color: black
 }
 
-/* @media screen and (max-width: 960px) {
+@media screen and (max-width: 960px) {
+  #first {
+    font-size: 1.7rem;
+  }
 
-} */
+  #intro {
+    font-size: 1.2rem;
+  }
+
+  .flowchart {
+    width: 500px;
+    height: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .first__upload { 
+    width: 550px;
+    height: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+  }
+
+  .second__upload { 
+    width: 600px;
+    height: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+  }
+
+  .third__upload {
+    width: 550px;
+    height: 450px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+  }
+
+  .fourth__upload {
+    width: 600px;
+    height: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+  }
+
+  .fifth__upload {
+    width: 600px;
+    height: 350px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+  }
+
+  .sixth__upload {
+    width: 600px;
+    height: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+  }
+
+  .title__it {
+    font-size: 3.5rem;
+  }
+}
 
 /* Columns are 1s when less than 768px */
 @media screen and (max-width: 768px) {
