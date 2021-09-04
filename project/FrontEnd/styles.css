@@ -726,6 +726,10 @@ bold {
   color: black
 }
 
+#hyperlink {
+  color: black;
+}
+
 @media screen and (max-width: 960px) {
   #first {
     font-size: 1.7rem;

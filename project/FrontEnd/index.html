@@ -96,14 +96,14 @@
     <div class="blog__container">
       <h1 id="first">About Me</h1>
       <hr class="change__width"/>
-      <h1 id="intro">My name is Derek Lam (he/him), and I am third year Computer Science student at the 
+      <h1 id="intro">My name is Derek Lam (he/him), and I am a third-year Computer Science student at the 
         University of California, Irvine. Outside of school, I like to play tennis, go on hikes, work out, 
         and learn about new technologies. I hope to build technical solutions that can impact diverse 
         audiences. </h1>
       <h1 id="first">The Premise</h1>
       <hr class="change__width"/>
       <h1 id="intro">While everyone is different in many ways, that should not stop 
-        certain types of people from living a normal life.
+        certain types of people from living normal lives.
         
         My project, Seeing It, aims to target individuals with visual
         impairment. This tool allows the blind to "see" the world through
@@ -122,7 +122,7 @@
         <img class="first__upload" src="https://lh3.googleusercontent.com/KgzAXXDKhKfghPOj2-FXCDCyQFG1aWa-TlUIz2HWD8TV63miVg7r1S5ce0B2NxB24nHQb7KA0swGMbyV3enUeV2ieDLR7X_--3xxPynAz8WSLC955IktIOF9c7vZ3dCN3W543AF2Ew=w2400"/> <br>
         In order to upload an image to the UI, we must have an <bold>input</bold>
         that accepts a file and a <bold>form</bold> that will hold the data to later
-        be processed. From there, we get the id's from both of these html
+        be processed. From there, we get the id's from both of these HTML
         elements and create a variable that will store a <bold>File</bold> object 
         containing the file name. After that, a <bold>FormData</bold> object is
         made since we're uploading an image as the body of the request
@@ -131,7 +131,7 @@
         anything). <br><br><br><br>
         
         2) Image Analyzer API <br><br>
-        Since we want a textual description about an image, we will be using
+        Since we want a textual description of an image, we will be using
         the Computer Vision service. The Image Analyzer API is in the form
         of an HTTP Trigger, where the backend code is covered since we are using
         Microsoft's Azure Serverless Functions. 
@@ -149,25 +149,25 @@
         two lists of information: the file name and type of file. Since we want
         the file name, we access the first index of "parts" and get the <bold>data</bold>
         attribute. Now that we have obtained the image, it will be used as a parameter 
-        for the function that calls the Computer Vison API (I will explain how the method
+        for the function that calls the Computer Vision API (I will explain how the method
         is made shortly). Finally, the image's description and confidence
         (how certain the algorithm is in being correct, usually in the form of a percentage)
         are both outputted in the form of text.
 
         <img class="third__upload" src="https://lh3.googleusercontent.com/h9Yo3XuF8y4lpl2uiRUzWPLtZp09J07YCxhGH5M-go3XsOhgEA4mpdd7CkLp098xuMM-nY97MkAlQUaaNXyZ-qT49opsKmPi7i2ze0HVD9ZdfkJVv9xjNPH5vkEA-cNV0nns6InPyw=w2400"/><br>
       
-        Lets talk about how the function is made. Since we're making a call to the 
+        Let's talk about how the function is made. Since we're making a call to the 
         Computer Vision API and looking specifically for the image analysis feature,
         we create a variable that holds both the endpoint and added extension. The parameters
         are then established to look for what information we need from the API. Following
         that, a POST request is made with the image and key being utilized. Finally, we
-        return the information as a json object and receive the data containing the 
+        return the information as a JSON object and receive the data containing the 
         <bold>description</bold> attribute. <br><br><br><br>
 
         2.5) Steps 1 + 2
         <img class="fourth__upload" src="https://lh3.googleusercontent.com/hjfzgZyeSHZfpOuD2aSl0KTW5r85OEDnQTVuNgprDGBVLjc8rYK99qbcLyrQ-dNuyGzIxg6rYQXkqf1V5smomCsLD6md5sSPBYqoabKmxSQ9ZU6cygwLprjyrFRnVMjnyzRoUzjMDg=w2400"/><br>
         With our files being able to properly upload and our Image Analyzer API working,
-        its time to put it all together. In order to made a request from a web page 
+        it's time to put it all together. In order to make a request from a web page 
         to an API, we must use the XMLHttpRequest object. After creating it, we use
         the <bold>XMLHttpRequest.open()</bold> method to make a POST request to the Image Analyzer API and 
         <bold>XMLHttpRequest.send()</bold> to attach the file as the request body. Finally, the <bold>XMLHttpRequest.onload()</bold>
@@ -179,7 +179,7 @@
         <img class="fifth__upload" src="https://lh3.googleusercontent.com/KWM9wgaqTUo62vKYBeAFE-CaD1QrBLdTk7Ld_inrACU_91UwkKfo4a8JsTUo3uTGkyo9fROklzTESINYwIXwhNIobpRwkOzpjms3HMZhp7qPJnJpPaa0WzRdbfeWYiWLWgqZxVPEGw=w2400"/><br>
         Since we're using a button to activate the Text-to-Speech API,
         we have to make a reference to it somehow, so in this case, by
-        the element's id. The fifth line is where we are setting the innerhtml
+        the element's id. The fifth line is where we are setting the inner HTML
         to "volumeOn," which is for styling purposes. Next, we need to store the output
         description as a variable since we need to translate it to speech. We do
         so by referencing the id labeled <bold>output</bold> (remember that "#output" was what
@@ -192,7 +192,7 @@
         a <bold>SpeakerAudioDestination</bold> object to establish where the audio will be played.
         Then use <bold>SpeakerAudioDestination().onAudioEnd()</bold> 
         (the code above is formatted differently, but works the same way) to add events while the speech is active. 
-        In this case, once the audio has completed, make the button clickable and have
+        In this case, once the audio has been completed, make the button clickable and have
         the "volumeOff" icon displayed. <br><br>
       
         After completing those steps, we have to get our 
@@ -216,7 +216,7 @@
         came to dealing with APIs during my time at the Serverless Camp. I soon
         realized that there had to be a different way of executing this problem
         since I was dealing with a plain script file. However, after doing some 
-        research, I found that making XMLHttpRequests were a common way of 
+        research, I found that making an XMLHttpRequest was a common way of 
         listening to events during requests made to servers. Through implementing
         the ".open()," ".send()," and ".onload()" methods from the XMLHttpRequest
         object, I was able to successfully analyze a given image and output its
@@ -232,7 +232,8 @@
       <h1 id="first">Moving Forward</h1>
       <hr class="change__width"/>
       <h1 id="intro">I hope to take my project and implement it in hardware so that it can be
-        utilized in any setting. Check out my github repository to view the code
+        utilized in any setting. Check out my Github repository to view the <a id="hyperlink" href="https://github.com/derk1021/serverless-bitproj/tree/main/project">
+          code</a>
         that made up my website!<br>
       </h1>
       <h1 id="first">Thanks and Acknowledgements</h1>
