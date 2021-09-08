@@ -1,3 +1,5 @@
-const foo = [1,2,3];
-const [n] = foo
-console.log(n)
+function hello() {
+    return 'Hello World';
+}
+console.log(hello());
+module.exports = hello;
