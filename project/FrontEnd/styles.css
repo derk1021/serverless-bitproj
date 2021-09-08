@@ -314,7 +314,8 @@
   font-size: 1.5rem;
   position: center;
   display: flex;
-  border: 5px solid black;
+  border: 3px solid black;
+  padding: 5px;
 }
 
 /* Keeps the 2 cards side to side */
@@ -888,5 +889,87 @@ bold {
 
   .title__it {
     font-size: 3.5rem;
+  }
+}
+
+/* ----- FOOTER SECTION ----- */
+
+/* Background for Footer section */
+.footer__section {
+  padding: 60px 0; /* 400px padding, making up the first entire page */
+  /* background-image: url("https://lh3.googleusercontent.com/LvHXpZMJN4jGUP1ZsFE_vG5pmC_I9dbOUhKJKhckpVlrKyfa1sRCxZs19LZpEoMLPKnC7VJAva5aNEA9mtkleyWPNn-EiJTbdP3JES85gVnbL54tXl5Wbgr7N20fhGM_asBwOv_yeQ=w2400"); */
+  background-position: center;
+  background: black
+}
+
+.contact__me {
+  margin-top: -35px;
+  float: left;
+  width: 40%;
+  margin-left: 50px;
+  text-align: center;
+}
+
+.social__media {
+  margin-top: -35px;
+  float: right;
+  margin-right: 50px;
+  width: 40%;
+  text-align: center;
+}
+
+#contacts {
+  color: white;
+}
+
+#socials {
+  color: white;
+}
+
+#contacts__font {
+  font-size: 1.2rem;
+}
+
+#socials__font {
+  font-size: 1.2rem;
+}
+
+.copyright__section {
+  padding-bottom: 20px; /* 400px padding, making up the first entire page */
+  /* background-image: url("https://lh3.googleusercontent.com/LvHXpZMJN4jGUP1ZsFE_vG5pmC_I9dbOUhKJKhckpVlrKyfa1sRCxZs19LZpEoMLPKnC7VJAva5aNEA9mtkleyWPNn-EiJTbdP3JES85gVnbL54tXl5Wbgr7N20fhGM_asBwOv_yeQ=w2400"); */
+  background-position: center;
+  background: black
+}
+
+.copyright__text {
+  text-align: center;
+  font-size: .9rem;
+  color: white;
+}
+
+.whole__container {
+  border: rgb(107, 100, 100) solid;
+  display: flex; /* USED FOR ALIGNMENT WHEN SCREEN IS MINIMIZED */
+  flex-direction: column; /* USED FOR ALIGNMENT WHEN SCREEN IS MINIMIZED */
+  justify-content: center; /* USED FOR ALIGNMENT WHEN SCREEN IS MINIMIZED */
+}
+
+@media screen and (max-width: 960px)  {
+  .contact__me {
+    font-size: .9rem;
+    width: 30%;
+  }
+
+  .social__media {
+    font-size: .9rem;
+    width: 30%;
+  }
+
+  #contacts__font {
+    font-size: 1rem;
+  }
+
+  #socials__font {
+    font-size: 1rem;
   }
 }
