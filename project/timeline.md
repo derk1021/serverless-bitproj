@@ -70,7 +70,7 @@
 #### Objective:
 > Checklist of everything you need to do to complete this issue
 - [ ] For testing purposes, make sure the components function correctly
-- [ ] Use CSS to beautify the UI (personal preference)
+- [ ] Use JavaScript, HTML, and CSS to beautify the UI (personal preference)
 
 
 ---

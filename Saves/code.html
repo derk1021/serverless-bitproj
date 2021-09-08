@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seeing It</title>
+    <!--
+      <link> is importing the custom css file
+    -->
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <div>
+        <h1>Picture Perfect</h1>
+        <form id="formData" enctype="multipart/form-data" onsubmit="getImage(event)">
+            <!--"Choose File" button that only accepts png and jpeg files-->
+            <input type="file" id="chooseFiles" accept="image/x-png,image/jpeg" name="image"></input>
+            <!--"Submit" button-->
+            <input type="submit" id="button1"/>
+        </form>
+        <br/>
+        <label><strong>Output:</strong></label>
+        <div id="output"></div>
+  </div>
+  <script>
+      console.log('he')
+  </script>
+</body>  
+
+<!--
+Importing JQuery
+-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<!--
+src="script.js" imports the contents from script.js to index.html to be used
+-->
+<script src="script.js" type="text/javascript"></script>

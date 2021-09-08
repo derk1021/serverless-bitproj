@@ -1,0 +1,975 @@
+/* Universal selector applied to all html elements */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Kumbh Sans', sans-serif;
+    scroll-behavior: smooth; /* Clean scroll behavior */
+  }
+
+/* ----- NAVIGATION BAR SECTION ----- */
+
+.navbar {
+  background: #e2ebfd;
+  height: 80px; /* Sets the height of navbar */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  position: sticky;
+  top: 0;
+  z-index: 999; /* Ensures the navbar items are above everything else in website */
+}
+  
+.navbar__container {
+  display: flex; /* Gives the container the ability to alter its items' width/height (and order) to best fill the available space */
+  justify-content: space-between;
+  height: 80px;
+  z-index: 1;
+  width: 100%;
+  max-width: 1300px; /* Don't let items span further than 1300px */
+  margin: 0 auto; /* top right bottom left */
+  padding: 0 50px;
+}
+
+/* "SEEING IT" logo */
+.navbar__logo {
+  color: #000000;
+  display: flex;
+  align-items: center; /* Centers the item */
+  cursor: pointer; /* When hovering, there is a pointer */
+  text-decoration: none; /* Removes the underline since it is a link */
+  font-size: 3rem;
+}
+  
+/* Navigation bar menu on the top right, controls all items */
+.navbar__menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+/* Sets each navigation item at the height of .navbar */
+.navbar__item {
+  height: 80px;
+}
+
+/* Sets each navigation item with styling and alignment */
+.navbar__links {
+  color: #A88757;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 125px;
+  text-decoration: none;
+  height: 100%;
+}
+
+/* When the browser window is 960 wide or less, do this (for the mobile menu) */
+@media screen and (max-width: 960px) {
+
+  .navbar__logo {
+    font-size: 2.5rem;
+  }
+
+  .navbar__container {
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    z-index: 1;
+    width: 100%;
+    max-width: 1300px;
+    padding: 0;
+  }
+  
+  /* The layout of the items when the dropdown menu is clicked (dropdown effecr) */
+  .navbar__menu {
+    display: grid;
+    grid-template-columns: auto;
+    margin: 0;
+    width: 100%;
+    position: absolute;
+    top: -1000px;
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: -1;
+  }
+  
+  /* Styling for when the dropdown menu is clicked */
+  .navbar__menu.active {
+    background: #e2ebfd;
+    top: 100%;
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: 99;
+    height: 60vh; /* Sets the height of the dropdown menu when clicked */
+    font-size: 1.6rem;
+  }
+  
+  /* Moves the logo to the left */
+  .navbar__logo {
+    padding-left: 25px;
+  }
+  
+  /* 3 bars appear when browser is minimized */
+  .navbar__toggle .bar {
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+    background: #A88757;
+    display: block; /* Makes the element appear */
+    cursor: pointer;
+  }
+  
+  /* Styling and alignment */
+  .navbar__item {
+    width: 100%;
+  }
+  
+  /* Styling and alignment */
+  .navbar__links {
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+    display: table;
+  }
+
+  /* Positions the dropdown menu, which turns into an "X" when clicked */
+  /* Has the properties of ".navbar__toggle .bar" */
+  #mobile-menu {
+    position: absolute;
+    top: 20%;
+    right: 5%;
+    transform: translate(5%, 20%);
+  }
+
+  /* Turning the dropdown to an "X" (2nd bar) */
+  #mobile-menu.is-active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  /* Turning the dropdown to an "X" (1st bar) */
+  #mobile-menu.is-active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  /* Turning the dropdown to an "X" (3rd bar) */ 
+  #mobile-menu.is-active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+  
+/* ----- HOME SECTION ----- */
+
+/* Sets up the entire first page (background, alignment) */
+.home__section {
+  padding: 400px 0; /* 400px padding, making up the first entire page */
+  background-image: url("https://lh3.googleusercontent.com/-ydoYWCxfZm989cLX1I8i1gwx-NHZ5OiCRtkYmTCtQD3Ca9Z_oUZL0jHCTqV6epGOc4oaLgVmBCDZyuSlLacuJfYx2PeT1aQyUsxhX4GKSSmsPeKvi2RDyYQm1zzJ5r0wu_UtrGPcg=w2400");
+  background-position: center;
+}
+
+/* Aligns the text in home page */
+.home__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 90%;
+  text-align: center;
+  padding: 30px;
+}
+  
+/* Styling for the heading */
+.home__heading {
+  font-size: 100px;
+  margin-bottom: 24px;
+  background: #A88757; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #A88757,
+    #d2891e
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #A88757,
+    #d2891e
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -mo-text-fill-color: transparent;
+}
+
+/* Styling for the description */
+.home__description {
+  font-size: 60px;
+  background: #ef909a; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to left,
+    #A88757,
+    #d2891e
+  ); 
+  background: linear-gradient(
+    to left,
+    #A88757,
+    #d2891e
+  ); 
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+  
+/* When screen size is less than 768 */
+@media screen and (max-width: 768px) {
+  .home__heading {
+    font-size: 60px;
+  }
+
+  .home__description {
+    font-size: 40px;
+  }
+}
+  
+/* Entire "Explore" button styling */
+.main__btn {
+  font-size: 1.8rem;
+  background: #833ab4;
+  background: -webkit-linear-gradient(to right, #ecca9c, #867777, #574663);
+  background: linear-gradient(to right, #ecca9c, #867777, #574663);
+  padding: 20px 60px;
+  border: none;
+  border-radius: 4px;
+  margin-top: 2rem;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.35s;
+  outline: none;
+}
+
+/* "Explore" keyword in the button */
+.main__btn a {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* After the button is hovered over */
+.main__btn:after {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: -webkit-linear-gradient(to left, #ecca9c, #867777, #574663);
+  background: linear-gradient(to left, #ecca9c, #867777, #574663);
+  transition: all 0.35s;
+  border-radius: 4px;
+}
+
+/* After hovering, the color of "Explore" is still white */
+.main__btn:hover {
+  color: #fff;
+}
+
+.main__btn:hover:after {
+  width: 100%;
+}
+  
+
+/* ----- SERVICE SECTION ----- */
+
+/* Sets up the entire first page (background, alignment) */
+.services__section {
+  background-image: url("https://lh3.googleusercontent.com/AWrBkIwMtigVacjt72CV22u35w7rLA2kqUmm6cBMh-0esl8fTtNgkwS67bKRg-rWfylv76USj6urMgpt47DHBnq7HwDrcByScBdr6fef4svYCZCvcQzmqSfr5166A48AzXdCSgdLXQ=w2400");
+  background-position: center;
+  background-position-x: -100px;
+  background-position-y: -100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 180px 0;
+}
+
+/* h1 tag */
+.services__section h1 {
+  color: black;
+  font-size: 4rem;
+  position: center;
+  display: flex;
+}
+
+/* p tag */
+.services__section p {
+  color: black;
+  font-size: 1.5rem;
+  position: center;
+  display: flex;
+  border: 3px solid black;
+  padding: 5px;
+}
+
+/* Keeps the 2 cards side to side */
+.services__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+
+/* Size and styling to the service cards themselves */
+.services__card {
+  margin: 10px;
+  height: 425px;
+  width: 350px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+  background-image: linear-gradient(to left, #f3d1d1, #e7a529, #d18800);
+  transition: 0.3s ease-in;
+}
+
+
+
+/* Second card styling: opposite of the 1st card*/
+.services__card:nth-child(2) {
+  background: linear-gradient(to right,#f3d1d1, #e7a529, #d18800); 
+}
+
+/* Second card styling: opposite of the 3rd card*/
+.services__card:nth-child(4) {
+  background: linear-gradient(to right,#f3d1d1, #e7a529, #d18800); 
+}
+
+/* h2 tag */
+.services__card h2 {
+  color: black;
+  display: flex;
+  justify-content: center;
+  margin: 3px;
+}
+
+/* For the "Click to Get File" styling */
+#file__id {
+  position: relative;
+  top: 150px;
+}
+
+/* Aligns the "Choose File" block */
+.services__card .choose__file {
+  margin: auto;
+  display: block;
+}
+
+/* Adds the transparent styling to the "Choose File" block */
+.choose__file {
+  font-size: 1rem;
+  color: black;
+  background: -webkit-linear-gradient(to right, #c2bfbf, #868585, #5f5f5f);
+  background: linear-gradient(to right, #c2bfbf, #868585, #5f5f5f);
+  padding: 14px 6px;
+  border: none;
+  border-radius: 4px;
+  margin-top: 2rem;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.35s;
+  outline: none;
+}
+
+/* Aligns the "Description" button */
+.services__card .desc__translate {
+  margin: auto;
+  display: block;
+}
+
+/* Adds transparent styling to the "Description" button */
+.desc__translate {
+  font-size: 1.5rem;
+  color: black;
+  background: -webkit-linear-gradient(to right, #ecca9c, #867777, #574663);
+  background: linear-gradient(to right, #ecca9c, #867777, #574663);
+  padding: 10px 30px;
+  border: none;
+  border-radius: 4px;
+  margin-top: 2rem;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.35s;
+  outline: none;
+}
+
+/* After hovering, the color of "Description" turns white */
+.desc__translate:hover {
+  color: #fff;
+}
+
+
+/* Aligns the "Translate to Speech" button */
+.services__card .translate__button {
+  margin: auto;
+  display: block;
+}
+
+/* Adds transparent styling to the "Translate to Speech" button */
+.translate__button {
+  font-size: 1.5rem;
+  color: black;
+  background: -webkit-linear-gradient(to left, #ecca9c, #867777, #574663);
+  background: linear-gradient(to left, #ecca9c, #867777, #574663);
+  padding: 10px 30px;
+  border: none;
+  border-radius: 4px;
+  margin-top: 2rem;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.35s;
+  outline: none;
+}
+
+/* After hovering, the color of "Translate to Speech" turns white */
+.translate__button:hover {
+  color: #fff;
+}
+
+/* "Image-preview" label */
+.output__label {
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: center;
+  color: black;
+  position: relative;
+  bottom: 10px;
+}
+
+/* "Output" when getting description */
+.output__label2 {
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: center;
+  color: black;
+  position: relative;
+  top: 5px;
+}
+
+/* Size of textarea */
+.services__card textarea {
+  width: 280px;
+  height: 150px;
+  margin: auto;
+  display: block;
+  position: relative;
+  top: 10px;
+}
+
+/* Adds a cursor pointer when hovering over the cards (additional stying effects too) */
+.services__card:hover {
+  transform: scale(1.075);
+  transition: 0.3s ease-in;
+  cursor: pointer;
+}
+
+/* Columns are side to side when less than 1300px */
+@media screen and (max-width: 1300px) {
+  .services__wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #file__id {
+    top: 140px;
+  }
+
+  .choose__file {
+    top: 2px;
+  }
+}
+
+/* Columns are 1s when less than 768px */
+@media screen and (max-width: 768px) {
+  .services__wrapper {
+    grid-template-columns: 1fr;
+  }
+  
+  .services__section {
+    height: 100%; /* Full height */
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+/* When screen is less than 960px */
+@media screen and (max-width: 960px)  {
+  .services__section h1 {
+    color: black;
+    font-size: 2.8rem;
+    position: center;
+    display: flex;
+  }
+
+  .services__section p {
+    color: black;
+    font-size: 1.2rem;
+    position: center;
+    display: flex;
+  }
+
+  .services__card {
+    height: 380px;
+    width: 310px;
+  }
+
+  .choose__file {
+    font-size: .9rem;
+    padding: 0px 0px;
+  }
+
+  .services__card h2 {
+    font-size: 1.2rem;
+  }
+
+  .desc__translate {
+    font-size: 1.3rem;
+  }
+
+  .translate__button {
+    font-size: 1.3rem;
+  }
+
+  .output__label {
+    font-size: 1.1rem;
+    bottom: 3px;
+  }
+
+  .output__label2 {
+    font-size: 1.1rem;
+    bottom: 3px;
+  }
+
+  .services__card textarea {
+    width: 250px;
+    height: 120px;
+  }
+}
+
+/* Blocks out the []Image Preview */
+.image__icon {
+  display: none;
+  width: 100%;
+}
+
+/* ----- LOADING SPINNERS ----- */
+
+/* Creates the container */
+.loading {
+  border-color: black;
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+
+/* Creates a virtual element (aka loader circle) */
+.loading::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border: 10px solid #dddddd;
+  border-top-color: #584d4d;
+  border-radius: 50%;
+  transform: rotate(0.16turn);
+  animation: loading 1s ease infinite; /* The animation from @keyframes is called here */
+}
+
+/* Centers the spinner within the container */
+.loading--full-height {
+  align-items: center;
+  height: 100%;
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0turn);
+  }  
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.spacing {
+  padding-right: 15px;
+}
+
+
+/* ----- BLOG SECTION ----- */
+
+/* Background for Blog section */
+.blog__section {
+  padding: 60px 0; /* 400px padding, making up the first entire page */
+  /* background-image: url("https://lh3.googleusercontent.com/LvHXpZMJN4jGUP1ZsFE_vG5pmC_I9dbOUhKJKhckpVlrKyfa1sRCxZs19LZpEoMLPKnC7VJAva5aNEA9mtkleyWPNn-EiJTbdP3JES85gVnbL54tXl5Wbgr7N20fhGM_asBwOv_yeQ=w2400"); */
+  background-position: center;
+  background: linear-gradient(to bottom, #9e7c50, #5e5151, #453c49);
+}
+
+.blog__container {
+  position: relative;
+  margin-left: 10px;
+  bottom: 20px;
+}
+
+.title__it {
+  color: white;
+  font-size: 5.5rem;
+  text-align: center;
+  position: relative;
+  padding-top: 30px;
+}
+
+/* "Blog" */
+#first {
+  margin-top: 50px;
+  color: white;
+}
+
+/* Sets the width fo horizontal line */
+hr.change__width {
+  width: 99%;
+  height: 5px;
+  background-color: white;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+/* All the text */
+#intro {
+  color: white;
+  font-size: 1.2rem;
+  padding-right: 5px;
+}
+
+/* Centers the Image */
+.flowchart { 
+  padding-top: 40px;
+  width: 700px;
+  height: 500px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Centers the Image */
+.first__upload { 
+  width: 800px;
+  height: 400px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
+}
+
+.second__upload { 
+  width: 900px;
+  height: 500px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
+}
+
+.third__upload {
+  width: 650px;
+  height: 500px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
+}
+
+.fourth__upload {
+  width: 800px;
+  height: 550px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
+}
+
+.fifth__upload {
+  width: 900px;
+  height: 500px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
+}
+
+.sixth__upload {
+  width: 800px;
+  height: 600px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
+}
+
+bold {
+  background-color: yellow;
+  color: black
+}
+
+#hyperlink {
+  color: black;
+}
+
+@media screen and (max-width: 960px) {
+  #first {
+    font-size: 1.7rem;
+  }
+
+  #intro {
+    font-size: 1.2rem;
+  }
+
+  .flowchart {
+    width: 500px;
+    height: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .first__upload { 
+    width: 550px;
+    height: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+  }
+
+  .second__upload { 
+    width: 600px;
+    height: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+  }
+
+  .third__upload {
+    width: 550px;
+    height: 450px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+  }
+
+  .fourth__upload {
+    width: 600px;
+    height: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+  }
+
+  .fifth__upload {
+    width: 600px;
+    height: 350px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+  }
+
+  .sixth__upload {
+    width: 600px;
+    height: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+  }
+
+  .title__it {
+    font-size: 3.5rem;
+  }
+}
+
+/* Columns are 1s when less than 768px */
+@media screen and (max-width: 768px) {
+  .hr.change__width {
+    height: 100%; /* Full height */
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  #first {
+    font-size: 1.5rem;
+  }
+
+  #intro {
+    font-size: 1rem;
+  }
+
+  .flowchart {
+    width: 400px;
+    height: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .first__upload { 
+    width: 450px;
+    height: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+  }
+
+  .second__upload { 
+    width: 500px;
+    height: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+  }
+
+  .third__upload {
+    width: 450px;
+    height: 350px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+  }
+
+  .fourth__upload {
+    width: 500px;
+    height: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+  }
+
+  .fifth__upload {
+    width: 500px;
+    height: 250px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+  }
+
+  .sixth__upload {
+    width: 500px;
+    height: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+  }
+
+  .title__it {
+    font-size: 3.5rem;
+  }
+}
+
+/* ----- FOOTER SECTION ----- */
+
+/* Background for Footer section */
+.footer__section {
+  padding: 60px 0; /* 400px padding, making up the first entire page */
+  /* background-image: url("https://lh3.googleusercontent.com/LvHXpZMJN4jGUP1ZsFE_vG5pmC_I9dbOUhKJKhckpVlrKyfa1sRCxZs19LZpEoMLPKnC7VJAva5aNEA9mtkleyWPNn-EiJTbdP3JES85gVnbL54tXl5Wbgr7N20fhGM_asBwOv_yeQ=w2400"); */
+  background-position: center;
+  background: black
+}
+
+.contact__me {
+  margin-top: -35px;
+  float: left;
+  width: 40%;
+  margin-left: 50px;
+  text-align: center;
+}
+
+.social__media {
+  margin-top: -35px;
+  float: right;
+  margin-right: 50px;
+  width: 40%;
+  text-align: center;
+}
+
+#contacts {
+  color: white;
+}
+
+#socials {
+  color: white;
+}
+
+#contacts__font {
+  font-size: 1.2rem;
+}
+
+#socials__font {
+  font-size: 1.2rem;
+}
+
+.copyright__section {
+  padding-bottom: 20px; /* 400px padding, making up the first entire page */
+  /* background-image: url("https://lh3.googleusercontent.com/LvHXpZMJN4jGUP1ZsFE_vG5pmC_I9dbOUhKJKhckpVlrKyfa1sRCxZs19LZpEoMLPKnC7VJAva5aNEA9mtkleyWPNn-EiJTbdP3JES85gVnbL54tXl5Wbgr7N20fhGM_asBwOv_yeQ=w2400"); */
+  background-position: center;
+  background: black
+}
+
+.copyright__text {
+  text-align: center;
+  font-size: .9rem;
+  color: white;
+}
+
+.whole__container {
+  border: rgb(107, 100, 100) solid;
+  display: flex; /* USED FOR ALIGNMENT WHEN SCREEN IS MINIMIZED */
+  flex-direction: column; /* USED FOR ALIGNMENT WHEN SCREEN IS MINIMIZED */
+  justify-content: center; /* USED FOR ALIGNMENT WHEN SCREEN IS MINIMIZED */
+}
+
+@media screen and (max-width: 960px)  {
+  .contact__me {
+    font-size: .9rem;
+    width: 30%;
+  }
+
+  .social__media {
+    font-size: .9rem;
+    width: 30%;
+  }
+
+  #contacts__font {
+    font-size: 1rem;
+  }
+
+  #socials__font {
+    font-size: 1rem;
+  }
+}

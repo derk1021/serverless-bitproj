@@ -18,7 +18,7 @@ module.exports = async function (context, req) {
 
     const description = callComputerVision.captions[0].text;
     const confidence = callComputerVision.captions[0].confidence;
-    const imageDescription = `The description is ${description}. This description's confidence is ${confidence.toFixed(2)*100}%`;
+    const imageDescription = `The description is ${description}. This description's confidence is ${confidence.toFixed(2)*100}%.`;
 
     context.res = {
         // status: 200, /* Defaults to 200 */
@@ -35,7 +35,7 @@ async function computerVision(img) {
         'details': 'Celebrities,Landmarks',
         'language': 'en'
     });
-    
+
     let resp = await fetch(uriBase + params.toString(), {
         method: 'POST',  
         body: img,  
@@ -53,4 +53,4 @@ async function computerVision(img) {
 
     // We want to return the object containing the available texts along with each confidence
     return data.description;
-}   
+}
