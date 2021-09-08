@@ -53,5 +53,5 @@ jobs:
       with:
         app-name: 'seeingit'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_42e6c38845234800a069b5bbda506c79 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_31e1bbb897994bd49efa78298764f1cc }}
         package: .
