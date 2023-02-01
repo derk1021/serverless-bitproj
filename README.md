@@ -67,3 +67,8 @@ Build a frontend with HTML/CSS/JS to interact with your serverless functions!
 > 
 > ### **Week 9** - Final Presentations 
 > Students will prepare a final presentation with a slidedeck on their project as well as write a blog post detailing their project and how they made it from start to finish.
+
+### Final Project Links
+Website demo for final project: https://www.loom.com/share/416f260e9f9a409c9a6b1f0e037b108e
+Website to Bit Project Blog outlining the journye to creating this project: https://www.bitproject.org/projects/computer-vision-text-to-descriptions
+Website link itself: www.seeingit.azurewebsites.net
